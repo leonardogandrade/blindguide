@@ -125,4 +125,30 @@ class Detector:
                 break
             
             (success, image) = cap.read()
-        cv2.destroyAllWindows()        
+        cv2.destroyAllWindows()
+
+    def testCam(self):
+        cap = cv2.VideoCapture(0)
+
+        if(cap.isOpened() == False):
+            print("Error opening file...")
+            return
+        
+        (success, image) = cap.read()
+
+        startTtime = 0
+        while success:
+            currentTime = time.time()
+
+            fps = 1 / (currentTime - startTtime)
+            startTtime = currentTime
+
+            cv2.putText(image, "FPS:" + str(int(fps)), (20,20), cv2.FONT_HERSHEY_PLAIN, 2, (0,255,0), 2)
+            cv2.imshow("Result", image)
+
+            key = cv2.waitKey(1) & 0xFF
+            if key == ord("q"):
+                break
+            
+            (success, image) = cap.read()
+        cv2.destroyAllWindows()  

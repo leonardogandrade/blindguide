@@ -11,9 +11,9 @@ threshold = 0.5
 
 classFile = "src/config/coco.names"
 detector = Detector()
-detector.readClasses(classFile)
-detector.downloadModel(modelURL)
-detector.loadModel()
+#detector.readClasses(classFile)
+#detector.downloadModel(modelURL)
+#detector.loadModel()
 # detector.predictImage(imagePath, threshold)
-detector.predictVideo(videoPath, threshold)
+detector.testCam()
 
